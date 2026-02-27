@@ -1,3 +1,17 @@
+:root {
+  --bg-color: #0d1117;
+  --card-bg: #161b22;
+  --text--dim: #8b949e;
+  --accent: #238636;
+  --border:  #30363d;
+
+}
+
+
+body {
+  background-color: var(--bg-color); /* Sem espaço aqui! */
+}
+
 .App {
   text-align: center;
 }
