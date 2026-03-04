@@ -3,7 +3,7 @@ import api from "./services/api";
 import './App.css';
 
 export default function App() {
-    const [username, setUsername] = useState('JVICTOR2-front');
+    const [username ] = useState('JVICTOR2-front');
     const[user, setUser] = useState(null);
     const[repos, setRepos] = useState([]);
     const[loading, setLoading] = useState(true);
@@ -34,7 +34,7 @@ export default function App() {
         }
       }
       loadData();
-    }, []);
+    }, [username]);
 
     if(loading){
       return (
@@ -60,18 +60,17 @@ export default function App() {
          <header className="profile-header">
             <img src={user.avatar_url} alt={user.name} className="avatar"/>
             <div className="user-info">
-            <h1>{user.name || user.login}</h1>
-            <p>{user.bio} || "sem bio disponivel"</p>
-            <div className="status">
-              <span><strong>{user.followers}</strong></span>
-              <span><strong>{user.followers}</strong></span>
-            </div>
-            <a href={user.html_url} target="_blank" rel="noreferrer"
-              className="gitghub-link">
+              <h1>{user.name || user.login}</h1>
+              <p>{user.bio || "Sem bio disponível"}</p>
+              <div className="status">
+                <span><strong>{user.followers}</strong> seguidores</span>
+                <span><strong>{user.following}</strong> seguindo</span>
+              </div>
+              <a href={user.html_url} target="_blank" rel="noreferrer" className="github-link">
                 Ver perfil completo
-            </a>
+              </a>
             </div>
-         </header>
+          </header>
 
          <main className="repos-section">
           <h2>Repositórios  recentes</h2>
@@ -83,7 +82,7 @@ export default function App() {
                 <div className="repo-footer">
                   <span>{repo.stargazers_count} </span>
                   <span>{repo.forks_count} </span>
-                  <a href="{repo.html_url}" target="_blank" rel="noreferrer">
+                  <a href={repo.html_url} target="_blank" rel="noreferrer">
                   Acessar
                   </a>
                 </div>
